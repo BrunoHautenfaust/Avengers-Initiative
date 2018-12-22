@@ -14,7 +14,9 @@
   "author": "BrunoHautenfaust",
   "license": "MIT",
   "dependencies": {
+    "body-parser": "^1.18.3",
     "express": "^4.16.4",
+    "firebase": "^5.5.5",
     "nodemon": "^1.18.9"
   }
 }
