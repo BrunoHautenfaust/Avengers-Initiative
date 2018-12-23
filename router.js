@@ -9,6 +9,7 @@ router.get('/', (req, res) => redirect('/avengers'));
 router.get('/avengers', controller.getAvengers);
 
 // READ BY ID
+router.get('/avengers/:id', controller.getAvenger);
 
 // CREATE
 router.post('/avengers', controller.validateFields, controller.addAvenger);

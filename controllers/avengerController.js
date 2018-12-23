@@ -17,7 +17,24 @@ controller.getAvengers = (req, res) => {
 		});
 };
 
-// ADD AVENGER
+// GET AVENGER BY ID
+controller.getAvenger = (req, res) => {
+	let id = req.params.id;
+	let avenger = AvengerModel.collection.doc(id);
+	avenger.get().then((documentSnapshot) => {
+		if (documentSnapshot.exists) {
+			let data = documentSnapshot.data();
+			res.send(data);
+		} else {
+			res.send('Avenger with id: ' + id + ' does not exists');
+		}
+	})
+	.catch((error) => {
+		res.send('Unable to get record:', error);
+	});
+};
+
+// CREATE AVENGER
 controller.addAvenger = (req, res) => {
 	let avenger = AvengerModel.avenger;
 	req.body.created = new Date();
