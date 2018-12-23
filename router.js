@@ -11,12 +11,12 @@ router.get('/avengers', controller.getAvengers);
 // READ BY ID
 
 // CREATE
-router.post('/avengers', controller.addAvenger);
+router.post('/avengers', controller.validateFields, controller.addAvenger);
 
 // UPDATE
-// router.post('/avengers/', (req, res) => res.send('hi, there!'));
+router.put('/avengers', controller.updateAvenger);
 
 // DELETE
-// router.get('/avengers', (req, res) => res.send('hi, there!'));
+router.delete('/avengers', controller.removeAvenger);
 
 module.exports = router;
