@@ -14,7 +14,7 @@ controller.getAvengers = (req, res) => {
 			}
 		})
 		.catch((error) => {
-			res.send(Constants.messages.cannotGetRecords, error);
+			res.send(Constants.messages.cannotGetRecords + error);
 		});
 };
 
@@ -31,7 +31,7 @@ controller.getAvenger = (req, res) => {
 		}
 	})
 	.catch((error) => {
-		res.send(Constants.messages.cannotGetRecords, error);
+		res.send(Constants.messages.cannotGetRecords + error);
 	});
 };
 
@@ -42,7 +42,7 @@ controller.addAvenger = (req, res) => {
 
 	avenger.set(req.body)
 		.then(() => res.send(Constants.messages.recordAdded))
-		.catch((error) => res.send(Constants.messages.cannotAddRecord, error));
+		.catch((error) => res.send(Constants.messages.cannotAddRecord + error));
 };
 
 // UPDATE AVENGER
@@ -53,7 +53,7 @@ controller.updateAvenger = (req, res) => {
 
 	avenger.update(req.body)
 		.then(() => res.send(Constants.messages.recordUpdated))
-		.catch((error) => res.send(Constants.messages.cannotUpdateRecord, error));
+		.catch((error) => res.send(Constants.messages.cannotUpdateRecord + error));
 };
 
 // REMOVE AVENGER
@@ -63,7 +63,7 @@ controller.removeAvenger = (req, res) => {
 
 	avenger.delete()
 		.then(() => res.send(Constants.messages.recordRemoved))
-		.catch((error) => res.send(Constants.messages.cannotRemoveRecord, error));
+		.catch((error) => res.send(Constants.messages.cannotRemoveRecord + error));
 };
 
 // VALIDATE FIELDS IN REQUEST BODY
