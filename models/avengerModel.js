@@ -1,7 +1,6 @@
-const firebase = require('../db');
-
-var collection = firebase.collection('avengers');
-var avenger = collection.doc();
+const firebase = require('../database/db');
+const collection = firebase.collection('avengers');
+let avenger = collection.doc();
 
 module.exports = {
 	collection : collection,

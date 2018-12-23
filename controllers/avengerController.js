@@ -1,16 +1,19 @@
-var AvengerModel = require('../models/avengerModel');
-var controller = {};
+const AvengerModel = require('../models/avengerModel');
+const controller = {};
 
 // GET AVENGERS
 controller.getAvengers = (req, res) => {
 	let collection = AvengerModel.collection.get()
 		.then((querySnapshot) => {
-			var data = querySnapshot.docs.map((documentSnapshot) => documentSnapshot.data());
-			res.send(data);
+			if (!querySnapshot.empty) {
+				let data = querySnapshot.docs.map((documentSnapshot) => documentSnapshot.data());
+				res.send(data);
+			} else {
+				res.send('No records found');
+			}
 		})
 		.catch((error) => {
-			console.error('Unable to get records: ', error);
-			res.end();
+			res.send('Unable to get records: ', error);
 		});
 };
 
@@ -22,7 +25,6 @@ controller.addAvenger = (req, res) => {
 	avenger.set(req.body)
 		.then(() => res.send('Avenger added to DB'))
 		.catch((error) => res.send('Cannot add avenger: ', error));
-	res.end();
 };
 
 // UPDATE AVENGER
@@ -46,15 +48,14 @@ controller.removeAvenger = (req, res) => {
 		.catch((error) => res.send('Cannot remove avenger: ', error));
 };
 
-// VALIDATE FIELDS IN REQUEST BODY.
+// VALIDATE FIELDS IN REQUEST BODY
 // Use only when there is no interface that can enforce the fields which we regard as required
 controller.validateFields = (req, res, next) => {
-	let keys = ['email', 'givenName', 'familyName'];
-	let hasRequiredKeys = keys.every((k) => {
-		return req.body.hasOwnProperty(k);
-	});
+	let requiredKeys = ['email', 'givenName', 'familyName'];
+	let hasRequiredKeys = requiredKeys.every((k) => { return req.body.hasOwnProperty(k); });
+	let reqBodyKeysLength = Object.keys(req.body).length;
 
-	if (hasRequiredKeys) {
+	if (hasRequiredKeys && reqBodyKeysLength === requiredKeys.length) {
 		next();
 	} else {
 		res.send('One or more of the fields are incorrect');

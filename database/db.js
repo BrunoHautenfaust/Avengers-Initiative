@@ -9,7 +9,7 @@ firebase.initializeApp({
 });
 
 // Initialize Cloud Firestore through Firebase
-var db = firebase.firestore();
+const db = firebase.firestore();
 
 // Disable deprecated features
 db.settings({
