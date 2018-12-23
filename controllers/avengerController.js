@@ -1,4 +1,5 @@
 const AvengerModel = require('../models/avengerModel');
+const Constants = require('../constants');
 const controller = {};
 
 // GET AVENGERS
@@ -9,11 +10,11 @@ controller.getAvengers = (req, res) => {
 				let data = querySnapshot.docs.map((documentSnapshot) => documentSnapshot.data());
 				res.send(data);
 			} else {
-				res.send('No records found');
+				res.send(Constants.messages.noRecordsFound);
 			}
 		})
 		.catch((error) => {
-			res.send('Unable to get records: ', error);
+			res.send(Constants.messages.cannotGetRecords, error);
 		});
 };
 
@@ -26,11 +27,11 @@ controller.getAvenger = (req, res) => {
 			let data = documentSnapshot.data();
 			res.send(data);
 		} else {
-			res.send('Avenger with id: ' + id + ' does not exists');
+			res.send(Constants.messages.recordDoesNotExist);
 		}
 	})
 	.catch((error) => {
-		res.send('Unable to get record:', error);
+		res.send(Constants.messages.cannotGetRecords, error);
 	});
 };
 
@@ -40,8 +41,8 @@ controller.addAvenger = (req, res) => {
 	req.body.created = new Date();
 
 	avenger.set(req.body)
-		.then(() => res.send('Avenger added to DB'))
-		.catch((error) => res.send('Cannot add avenger: ', error));
+		.then(() => res.send(Constants.messages.recordAdded))
+		.catch((error) => res.send(Constants.messages.cannotAddRecord, error));
 };
 
 // UPDATE AVENGER
@@ -51,8 +52,8 @@ controller.updateAvenger = (req, res) => {
 	delete req.body.id;
 
 	avenger.update(req.body)
-		.then(() => res.send('Avenger with id: '+ id + ' has been updated'))
-		.catch((error) => res.send('Cannot update avenger: ', error));
+		.then(() => res.send(Constants.messages.recordUpdated))
+		.catch((error) => res.send(Constants.messages.cannotUpdateRecord, error));
 };
 
 // REMOVE AVENGER
@@ -61,8 +62,8 @@ controller.removeAvenger = (req, res) => {
 	let avenger = AvengerModel.collection.doc(id);
 
 	avenger.delete()
-		.then(() => res.send('Avenger with id: '+ id + ' has been removed'))
-		.catch((error) => res.send('Cannot remove avenger: ', error));
+		.then(() => res.send(Constants.messages.recordRemoved))
+		.catch((error) => res.send(Constants.messages.cannotRemoveRecord, error));
 };
 
 // VALIDATE FIELDS IN REQUEST BODY
@@ -75,7 +76,7 @@ controller.validateFields = (req, res, next) => {
 	if (hasRequiredKeys && reqBodyKeysLength === requiredKeys.length) {
 		next();
 	} else {
-		res.send('One or more of the fields are incorrect');
+		res.send(Constants.messages.validationError);
 	}
 };
 

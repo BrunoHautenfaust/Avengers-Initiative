@@ -1,8 +1,8 @@
 const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
-const port = 8080;
 const router = require('./router');
+const port = 8080;
 
 app.use(bodyParser.urlencoded({ extended: true }));
 

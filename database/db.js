@@ -1,11 +1,12 @@
 const firebase = require('firebase');
 // Required for side-effects
 require('firebase/firestore');
+const Constants = require('../constants');
 
 firebase.initializeApp({
-  apiKey: 'AIzaSyCVn1oAM0-Go1yKsvIrZUzr54EV96AQVPk',
-  authDomain: 'avengers-initiative-fa89b.firebaseapp.com',
-  projectId: 'avengers-initiative-fa89b'
+  apiKey: Constants.dbConfig.apiKey,
+  authDomain: Constants.dbConfig.authDomain,
+  projectId: Constants.dbConfig.projectId
 });
 
 // Initialize Cloud Firestore through Firebase
