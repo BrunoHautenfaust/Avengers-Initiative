@@ -49,7 +49,7 @@ controller.addAvenger = (req, res) => {
 	req.body.created = new Date();
 
 	avenger.set(req.body)
-		.then(() => res.redirect('/avengers')) //res.send(Constants.messages.recordAdded))
+		.then(() => res.send(Constants.messages.recordAdded)) // res.redirect('/avengers'))
 		.catch((error) => res.send(Constants.messages.cannotAddRecord + error));
 };
 
@@ -80,7 +80,7 @@ controller.validateFields = (req, res, next) => {
 	let requiredKeys = ['email', 'givenName', 'familyName'];
 	let hasRequiredKeys = requiredKeys.every((k) => { return req.body.hasOwnProperty(k); });
 	let reqBodyKeysLength = Object.keys(req.body).length;
-
+console.log(reqBodyKeysLength);
 	if (hasRequiredKeys && reqBodyKeysLength === requiredKeys.length) {
 		next();
 	} else {
@@ -89,8 +89,8 @@ controller.validateFields = (req, res, next) => {
 };
 
 // RENDER ADD FORM
-controller.popup = (req, res) => {
-	res.render('../views/popup');
+controller.form = (req, res) => {
+	res.render('../views/form');
 };
 
 module.exports = controller;

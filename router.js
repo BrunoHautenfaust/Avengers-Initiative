@@ -20,6 +20,6 @@ router.put('/avengers', controller.updateAvenger);
 // DELETE
 router.delete('/avengers', controller.removeAvenger);
 
-router.get('/popup', controller.popup);
+router.get('/form', controller.form);
 
 module.exports = router;
