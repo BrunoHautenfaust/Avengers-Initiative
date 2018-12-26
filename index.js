@@ -4,6 +4,8 @@ const bodyParser = require('body-parser');
 const router = require('./router');
 const port = 8080;
 
+app.set('view engine', 'ejs');
+
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use('/', router);

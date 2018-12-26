@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="en">
+	<head>
+	  <meta charset="utf-8">
+	  <title>Avengers Initiative</title>
+	  <link rel="stylesheet" href="css/styles.css?v=1.0">
+	</head>
+	<body>
+	<h1>Avengers Initiative</h1>
+	<div class="avengers">
+		<% avengers.forEach((a) => { %>
+		<div class="avenger">
+			<p> <%= a.givenName %> <%= a.familyName %> </p>
+			<p> <%= a.email %> </p>
+		<% }) %>
+		</div>
+	</div>
+	</body>
+</html>

@@ -8,7 +8,8 @@ controller.getAvengers = (req, res) => {
 		.then((querySnapshot) => {
 			if (!querySnapshot.empty) {
 				let data = querySnapshot.docs.map((documentSnapshot) => documentSnapshot.data());
-				res.send(data);
+
+				res.render('../views/index', {avengers: data});
 			} else {
 				res.send(Constants.messages.noRecordsFound);
 			}
