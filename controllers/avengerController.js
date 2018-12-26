@@ -7,7 +7,13 @@ controller.getAvengers = (req, res) => {
 	let collection = AvengerModel.collection.get()
 		.then((querySnapshot) => {
 			if (!querySnapshot.empty) {
-				let data = querySnapshot.docs.map((documentSnapshot) => documentSnapshot.data());
+				let data = querySnapshot.docs.map((documentSnapshot) => {
+					let docSnapshot = documentSnapshot.data();
+					let docId = documentSnapshot.id;
+					docSnapshot.id = docId;
+
+					return docSnapshot;
+				});
 
 				res.render('../views/index', {avengers: data});
 			} else {
@@ -22,6 +28,7 @@ controller.getAvengers = (req, res) => {
 // GET AVENGER BY ID
 controller.getAvenger = (req, res) => {
 	let id = req.params.id;
+
 	let avenger = AvengerModel.collection.doc(id);
 	avenger.get().then((documentSnapshot) => {
 		if (documentSnapshot.exists) {
@@ -33,7 +40,7 @@ controller.getAvenger = (req, res) => {
 	})
 	.catch((error) => {
 		res.send(Constants.messages.cannotGetRecords + error);
-	});
+	});	
 };
 
 // CREATE AVENGER
@@ -42,7 +49,7 @@ controller.addAvenger = (req, res) => {
 	req.body.created = new Date();
 
 	avenger.set(req.body)
-		.then(() => res.send(Constants.messages.recordAdded))
+		.then(() => res.redirect('/avengers')) //res.send(Constants.messages.recordAdded))
 		.catch((error) => res.send(Constants.messages.cannotAddRecord + error));
 };
 
@@ -79,6 +86,11 @@ controller.validateFields = (req, res, next) => {
 	} else {
 		res.send(Constants.messages.validationError);
 	}
+};
+
+// RENDER ADD FORM
+controller.popup = (req, res) => {
+	res.render('../views/popup');
 };
 
 module.exports = controller;

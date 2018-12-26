@@ -5,6 +5,7 @@ const router = require('./router');
 const port = 8080;
 
 app.set('view engine', 'ejs');
+app.use(express.static(__dirname + '/public'));
 
 app.use(bodyParser.urlencoded({ extended: true }));
 

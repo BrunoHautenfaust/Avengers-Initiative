@@ -1,19 +1,23 @@
 <!doctype html>
 <html lang="en">
 	<head>
-	  <meta charset="utf-8">
-	  <title>Avengers Initiative</title>
-	  <link rel="stylesheet" href="css/styles.css?v=1.0">
+		<meta charset="utf-8">
+		<title>Avengers Initiative</title>
+		<link rel="stylesheet" href="css/styles.css" type="text/css">
+
 	</head>
 	<body>
 	<h1>Avengers Initiative</h1>
 	<div class="avengers">
 		<% avengers.forEach((a) => { %>
-		<div class="avenger">
+		<div id="<%= a.id %>" class="avenger">
 			<p> <%= a.givenName %> <%= a.familyName %> </p>
 			<p> <%= a.email %> </p>
-		<% }) %>
 		</div>
+		<% }) %>
 	</div>
+
+	<button class="add">AAA</a>
+	  		<script src="events.js"></script>
 	</body>
 </html>
