@@ -8,6 +8,13 @@ for (let i = 0; i < avenger.length; i++) {
     avenger[i].addEventListener('click', renderEditForm);
 }
 
+function removeAvenger(e) {
+	e.preventDefault();
+	let form = document.getElementById('form');
+   	let formData = serializeForm(form);
+	sendFormData('delete', '/avengers', formData);
+}
+
 function renderEditForm() {
 	let id = this.getAttribute('id');
 	let request = new XMLHttpRequest();
@@ -23,6 +30,9 @@ function renderEditForm() {
 			Array.from(elementsWithAddClass).forEach((el) => {
 				el.className += ' hide';
 			});
+
+			let removeButton = document.getElementsByClassName('removeBtn')[0];
+			removeButton.addEventListener('click', removeAvenger);
 
 	    	// submit form with AJAX
 	        form.addEventListener('submit', (e) => {

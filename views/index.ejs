@@ -7,17 +7,17 @@
 
 	</head>
 	<body>
-	<h1>Avengers Initiative</h1>
-	<div class="avengers">
-		<% avengers.forEach((a) => { %>
-		<div id="<%= a.id %>" class="avenger">
-			<p class="name"> <%= a.givenName %> <%= a.familyName %> </p>
-			<p class="email"> <%= a.email %> </p>
+		<h1>Avengers Initiative</h1>
+		<div class="avengers">
+			<% avengers.forEach((a) => { %>
+			<div id="<%= a.id %>" class="avenger">
+				<p class="name"> <%= a.givenName %> <%= a.familyName %> </p>
+				<p class="email"> <%= a.email %> </p>
+			</div>
+			<% }) %>
 		</div>
-		<% }) %>
-	</div>
 
-	<button class="add">AAA</a>
-	  		<script src="events.js"></script>
+		<button class="add">AAA</a>
+		<script src="events.js"></script>
 	</body>
 </html>
