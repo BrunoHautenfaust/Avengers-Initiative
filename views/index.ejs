@@ -11,8 +11,8 @@
 	<div class="avengers">
 		<% avengers.forEach((a) => { %>
 		<div id="<%= a.id %>" class="avenger">
-			<p> <%= a.givenName %> <%= a.familyName %> </p>
-			<p> <%= a.email %> </p>
+			<p class="name"> <%= a.givenName %> <%= a.familyName %> </p>
+			<p class="email"> <%= a.email %> </p>
 		</div>
 		<% }) %>
 	</div>

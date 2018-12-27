@@ -28,12 +28,14 @@ controller.getAvengers = (req, res) => {
 // GET AVENGER BY ID
 controller.getAvenger = (req, res) => {
 	let id = req.params.id;
-
 	let avenger = AvengerModel.collection.doc(id);
 	avenger.get().then((documentSnapshot) => {
 		if (documentSnapshot.exists) {
 			let data = documentSnapshot.data();
-			res.send(data);
+			let docId = documentSnapshot.id;
+			data.id = docId;
+			
+			res.render('../views/form', {avenger: data});
 		} else {
 			res.send(Constants.messages.recordDoesNotExist);
 		}
@@ -88,9 +90,9 @@ controller.validateFields = (req, res, next) => {
 	}
 };
 
-// RENDER ADD FORM
+// RENDER ADD/EDIT FORM
 controller.form = (req, res) => {
-	res.render('../views/form');
+	res.render('../views/form', {avenger : {}});
 };
 
 module.exports = controller;

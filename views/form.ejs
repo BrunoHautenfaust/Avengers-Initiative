@@ -1,17 +1,20 @@
-<div>
-	<h3>Add an Avenger</h3>
-	<form id="addForm" method="post" action="/avengers">
+<h3 class="add">Add an Avenger</h3>
+<h3 class="edit">Edit Avenger</h3>
+<form id="form" method="post" action="/avengers">
 
-		<label for="givenName">Given name
-			<input type="text" name="givenName" id="givenName"><br>
-		</label>
-		<label for="familyName">Family name
-			<input type="text" name="familyName" id="familyName"><br>
-		</label>
-		<label for="email">Email
-			<input type="text" name="email" id="email"><br>
-		</label>
+	<% if (avenger.id) { %>
+		<input type="hidden" name="id" id="id" value="<%= avenger.id %>"
+	<% } %>
+	<label for="givenName">Given name
+		<input type="text" name="givenName" id="givenName" value="<%= avenger.givenName ? avenger.givenName : '' %>"><br>
+	</label>
+	<label for="familyName">Family name
+		<input type="text" name="familyName" id="familyName" value="<%= avenger.familyName ? avenger.familyName : '' %>"><br>
+	</label>
+	<label for="email">Email
+		<input type="text" name="email" id="email" value="<%= avenger.email ? avenger.email : '' %>"><br>
+	</label>
 
-		<input type="submit" value="Add">
-	</form> 
-</div>
+	<input class="add" type="submit" value="Add">
+	<input class="edit" type="submit" value="Edit">
+</form> 
