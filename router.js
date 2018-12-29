@@ -3,7 +3,7 @@ const router = express.Router();
 const controller = require('./controllers/avengerController');
 
 // READ
-router.get('/', (req, res) => redirect('/avengers'));
+router.get('/', (req, res) => res.redirect('/avengers'));
 
 // READ
 router.get('/avengers', controller.getAvengers);
