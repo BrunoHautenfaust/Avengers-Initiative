@@ -22,6 +22,7 @@ function renderEditForm() {
 	request.onload = () => {
 		if (request.status === 200) {
 			let form = document.createElement('div');
+			form.className = 'form-container';
 	    	form.innerHTML = request.responseText;
 
 	    	body.appendChild(form);
@@ -54,6 +55,7 @@ function renderAddForm() {
 	request.onload = () => {
 	    if (request.status === 200) {
 	        let form = document.createElement('div');
+	        form.className = 'form-container';
 	        form.innerHTML = request.responseText;
 	        body.appendChild(form);
 
