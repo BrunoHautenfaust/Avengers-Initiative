@@ -4,7 +4,10 @@
   "description": "A web API using CRUD to manage a user persistence layer",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "all-scripts": "npm-run-all -p nodemon sass",
+    "nodemon": "nodemon index.js",
+    "sass": "node-sass --watch public/scss -o public/css"
   },
   "keywords": [
     "nodejs",
@@ -18,6 +21,8 @@
     "ejs": "^2.6.1",
     "express": "^4.16.4",
     "firebase": "^5.5.5",
-    "nodemon": "^1.18.9"
+    "node-sass": "^4.11.0",
+    "nodemon": "^1.18.9",
+    "npm-run-all": "^4.1.5"
   }
 }

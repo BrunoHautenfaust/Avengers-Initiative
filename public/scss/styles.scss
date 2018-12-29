@@ -1,0 +1,31 @@
+body {
+	background-color: #020b10;
+	color: white;
+	text-align: center;
+}
+
+.avenger {
+	border: 2px solid white;
+	margin: 10px 0;
+
+	&:hover {
+		cursor: pointer;
+	}
+}
+
+.hide {
+	display: none;
+}
+
+.form-container {
+	position: absolute;
+    border: 2px solid white;
+    top: 50%;
+    left: calc(50% - 297px/2);
+    padding: 2%;
+    background-color: rgba(2, 11, 16, 0.7);
+
+    h3 {
+    	margin-top: 0;
+    }
+}
