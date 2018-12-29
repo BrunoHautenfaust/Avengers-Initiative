@@ -48,8 +48,13 @@ controller.getAvenger = (req, res) => {
 // CREATE AVENGER
 controller.addAvenger = (req, res) => {
 	let avenger = AvengerModel.avenger;
-	req.body.created = new Date();
 
+	// for(let prop in req.body) {
+	// 	req.body[prop] = req.sanitize(req.body[prop]);
+	// 	console.log(req.body[prop]);
+	// }
+
+	req.body.created = new Date();
 	avenger.set(req.body)
 		.then(() => res.send(Constants.messages.recordAdded))
 		.catch((error) => res.send(Constants.messages.cannotAddRecord + error));
@@ -76,17 +81,34 @@ controller.removeAvenger = (req, res) => {
 		.catch((error) => res.send(Constants.messages.cannotRemoveRecord + error));
 };
 
+// SANITIZE INPUT FIELDS AND REMOVE THOSE WHICH DO NOT PASS THE SANITIZATION
+controller.sanitizeFields = (req, res, next) => {
+	for(let prop in req.body) {
+		req.body[prop] = req.sanitize(req.body[prop]);
+		if (!req.body[prop].length) {
+			delete req.body[prop];
+		}
+	}
+
+	next();
+};
+
 // VALIDATE FIELDS IN REQUEST BODY
-// Use only when there is no interface that can enforce the fields which we regard as required
 controller.validateFields = (req, res, next) => {
 	let requiredKeys = ['email', 'givenName', 'familyName'];
-	let hasRequiredKeys = requiredKeys.every((k) => { return req.body.hasOwnProperty(k); });
+	
+	// When we update a record, we need the id
+	if (req.body.hasOwnProperty('id')) {
+		requiredKeys.push('id');
+	}
+
+	let hasRequiredKeys = requiredKeys.every((k) => { return req.body.hasOwnProperty(k)	});
 	let reqBodyKeysLength = Object.keys(req.body).length;
 
 	if (hasRequiredKeys && reqBodyKeysLength === requiredKeys.length) {
 		next();
 	} else {
-		res.send(Constants.messages.validationError);
+		res.status(400).send(Constants.messages.validationError);
 	}
 };
 

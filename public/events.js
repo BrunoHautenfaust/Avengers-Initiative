@@ -4,14 +4,17 @@ let overlay = document.getElementById('dim');
 let avenger = document.getElementsByClassName('avenger');
 
 addButton.addEventListener('click', renderAddForm);
-overlay.addEventListener('click', (e) =>{
-	e.target.className = '';
-	let form = document.getElementsByClassName('form-container')[0];
-	form.remove();
-});
 
 for (let i = 0; i < avenger.length; i++) {
     avenger[i].addEventListener('click', renderEditForm);
+}
+
+overlay.addEventListener('click', fadeOut);
+
+function fadeOut(e) {
+	e.target.className = '';
+	let form = document.getElementsByClassName('form-container')[0];
+	form.remove();
 }
 
 function removeAvenger(e) {
@@ -22,6 +25,7 @@ function removeAvenger(e) {
 }
 
 function renderEditForm() {
+	let overlay = document.getElementById('dim');
 	overlay.className = 'fadeout';
 
 	let id = this.getAttribute('id');
@@ -57,6 +61,7 @@ function renderEditForm() {
 };
 
 function renderAddForm() {
+	let overlay = document.getElementById('dim');
 	overlay.className = 'fadeout';
 
 	let request = new XMLHttpRequest();
@@ -103,9 +108,10 @@ function sendFormData(method, url, data) {
 	request.setRequestHeader('Content-type', 'application/json');
 	request.onload = () => {
 		if (request.status === 200) {
-			let response = document.createElement('div');
-			response.innerText = request.responseText;
-			body.appendChild(response);
+			let message = document.createElement('div');
+			message.innerText = request.responseText;
+			let form = document.getElementById('form');
+			form.appendChild(message);
 
 			// Reload records after 1 second
 			setTimeout(() => {
@@ -114,7 +120,7 @@ function sendFormData(method, url, data) {
 				xhr.onload = () => {
 				    if (xhr.status === 200) {
 				    	body.innerHTML = xhr.responseText;
-				    	// Redefine add and edit buttons and rebind event
+				    	// Redefine add and edit buttons and rebind events
 				    	let addButton = document.getElementsByClassName('add')[0];
 				    	addButton.addEventListener('click', renderAddForm);
 
@@ -122,6 +128,9 @@ function sendFormData(method, url, data) {
 						for (let i = 0; i < avenger.length; i++) {
 						    avenger[i].addEventListener('click', renderEditForm);
 						}
+
+						let overlay = document.getElementById('dim');
+						overlay.addEventListener('click', fadeOut);
 				    } else {
 				    	alert('Request failed. Returned status of ' + request.status);
 				    }
@@ -129,7 +138,10 @@ function sendFormData(method, url, data) {
 				xhr.send();
 			}, 1000);
 		} else {
-			alert('Request failed. Returned status of ' + request.status);
+			let form = document.getElementById('form');
+			let message = document.createElement('div');
+			message.innerHTML = request.responseText;
+			form.appendChild(message);
 		}
 	};
 	request.send(data);

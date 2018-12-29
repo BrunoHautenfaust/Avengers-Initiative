@@ -12,10 +12,10 @@ router.get('/avengers', controller.getAvengers);
 router.get('/avengers/:id', controller.getAvenger);
 
 // CREATE
-router.post('/avengers', controller.validateFields, controller.addAvenger);
+router.post('/avengers', controller.sanitizeFields, controller.validateFields, controller.addAvenger);
 
 // UPDATE
-router.put('/avengers', controller.updateAvenger);
+router.put('/avengers', controller.sanitizeFields, controller.validateFields, controller.updateAvenger);
 
 // DELETE
 router.delete('/avengers', controller.removeAvenger);
