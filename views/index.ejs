@@ -13,6 +13,7 @@
 			<div id="<%= a.id %>" class="avenger">
 				<p class="name"> <%= a.givenName %> <%= a.familyName %> </p>
 				<p class="email"> <%= a.email %> </p>
+				<p class="created"> <%= a.created.toDate() %> </p>
 			</div>
 			<% }) %>
 		</div>
