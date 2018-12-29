@@ -1,21 +1,21 @@
-<h3 class="add">Add an Avenger</h3>
-<h3 class="edit">Edit Avenger</h3>
+<h2 class="add">Add an Avenger</h2>
+<h2 class="edit">Edit Avenger</h2>
 <form id="form" method="post" action="/avengers">
 
 	<% if (avenger.id) { %>
-		<input type="hidden" name="id" id="id" value="<%= avenger.id %>"
+		<input type="hidden" name="id" id="id" value="<%= avenger.id %>">
 	<% } %>
 	<label for="givenName">Given name
-		<input type="text" name="givenName" id="givenName" value="<%= avenger.givenName ? avenger.givenName : '' %>"><br>
-	</label>
+<input type="text" name="givenName" id="givenName" value="<%= avenger.givenName ? avenger.givenName : '' %>">
+	</label><br>
 	<label for="familyName">Family name
-		<input type="text" name="familyName" id="familyName" value="<%= avenger.familyName ? avenger.familyName : '' %>"><br>
-	</label>
+<input type="text" name="familyName" id="familyName" value="<%= avenger.familyName ? avenger.familyName : '' %>">
+	</label><br>
 	<label for="email">Email
-		<input type="text" name="email" id="email" value="<%= avenger.email ? avenger.email : '' %>"><br>
-	</label>
+<input type="text" name="email" id="email" value="<%= avenger.email ? avenger.email : '' %>">
+	</label><br>
 
-	<input class="add" type="submit" value="Add">
-	<input class="edit" type="submit" value="Edit">
-	<input class="removeBtn edit" type="submit" value="Remove">
+	<button class="add"><span>Add</span></button>
+	<button class="edit"><span>Edit</span></button>
+	<button class="removeBtn edit"><span>Remove</span></button>
 </form> 

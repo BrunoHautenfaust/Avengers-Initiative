@@ -1,31 +1,159 @@
+$border: #3499BA;
+$border-hover: #9ECAED;
+$bg: rgb(2, 11, 16);
+$bg-transparent: rgba(2, 11, 16, 0.9);
+$text: #C6E9F2;
+$title: #E3EFF2;
+$title-outline: #7299B5;
+
+@font-face {
+  font-family: 'Ubuntu';
+  src: url('../css/fonts/UbuntuCondensed-Regular.ttf');
+
+}
+
 body {
-	background-color: #020b10;
-	color: white;
+	/*background-color: $bg;*/
+	color: $text;
 	text-align: center;
+  font-family: 'Ubuntu', sans-serif;
+
+
+/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#05212e+0,020b10+43,000000+99 */
+background: #05212e; /* Old browsers */
+background: -moz-radial-gradient(center, ellipse cover, #05212e 0%, #020b10 43%, #000000 99%); /* FF3.6-15 */
+background: -webkit-radial-gradient(center, ellipse cover, #05212e 0%,#020b10 43%,#000000 99%); /* Chrome10-25,Safari5.1-6 */
+background: radial-gradient(ellipse at center, #05212e 0%,#020b10 43%,#000000 99%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#05212e', endColorstr='#000000',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+
+}
+
+h1 {
+  text-transform: uppercase;
+  font-style: italic;
+  text-decoration: underline;
+  color: $title;
+  -webkit-text-stroke: 1px $title-outline;
 }
 
 .avenger {
-	border: 2px solid white;
+	border: 2px solid $border;
 	margin: 10px 0;
 
 	&:hover {
-		cursor: pointer;
-	}
+    border-color: $border-hover;
+    box-shadow: 0 0 10px $border-hover;
+    cursor: pointer;
+  }
 }
 
 .hide {
 	display: none;
 }
 
+.fadeout {
+  animation: fadeout 0.4s;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  background-color: $bg-transparent;
+}
+
+button {
+    border-radius: 2px;
+    border: 2px solid $border;
+    background-color: transparent;
+    color: white;
+    padding: 5px 20px;
+    transform: skewX(20deg);
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 18px;
+
+    span {
+      display: inline-block;
+      transform: skewX(-20deg);
+    }
+
+  &:hover {
+    border-color: $border-hover;
+    box-shadow: 0 0 10px $border-hover;
+    cursor: pointer;
+  }
+}
+
 .form-container {
 	position: absolute;
-    border: 2px solid white;
-    top: 50%;
+    border: 2px solid $border;
+    top: calc(50% - 180px);
     left: calc(50% - 297px/2);
     padding: 2%;
-    background-color: rgba(2, 11, 16, 0.7);
+    background-color: $bg-transparent;
 
-    h3 {
+    h2 {
     	margin-top: 0;
     }
+
+    #form {
+      label {
+        display: block;
+        font-size: 18px;
+      }
+
+      input[type="text"] {
+        background-color: transparent;
+        color: white;
+        border-radius: 2px;
+        border: 2px solid $border;
+        max-width: 50%;
+        float: right;
+        text-indent: 5px;
+        font-size: 14px;
+      }
+
+      .edit {
+        margin: 0 10px;
+      }
+    }
 }
+
+/* ANIMATIONS */
+
+@keyframes fadeout {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+.path {
+  position: absolute;
+  overflow: hidden;
+  width: 99%;
+  height: 80px;
+  background-color: #c1c1c1;
+  /*margin: auto;*/
+}
+.shape {
+  position: absolute;
+  background-color: red;
+  width: 100%;
+  height: 20px;
+  display: block;
+  /*border-radius: 50%;*/
+  left: -50;
+  transform-origin:left;
+  
+  /*animation: ani 4.0s infinite;*/
+  animation: linear 4s pass infinite;
+}
+
+/*
+@keyframes pass {
+  from { transform: scaleX(0); }
+  to   { transform: scaleX(2); }
+  90% {
+    transform-origin: right center;
+    transofrm: scaleX(1);
+
+  }
+}
+*/

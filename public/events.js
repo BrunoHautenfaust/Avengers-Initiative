@@ -1,8 +1,14 @@
 let addButton = document.getElementsByClassName('add')[0];
 let body = document.getElementsByTagName('body')[0];
+let overlay = document.getElementById('dim');
 let avenger = document.getElementsByClassName('avenger');
 
 addButton.addEventListener('click', renderAddForm);
+overlay.addEventListener('click', (e) =>{
+	e.target.className = '';
+	let form = document.getElementsByClassName('form-container')[0];
+	form.remove();
+});
 
 for (let i = 0; i < avenger.length; i++) {
     avenger[i].addEventListener('click', renderEditForm);
@@ -16,6 +22,8 @@ function removeAvenger(e) {
 }
 
 function renderEditForm() {
+	overlay.className = 'fadeout';
+
 	let id = this.getAttribute('id');
 	let request = new XMLHttpRequest();
 	request.open('GET', 'avengers/'+ id);
@@ -27,7 +35,7 @@ function renderEditForm() {
 
 	    	body.appendChild(form);
 
-	    	let elementsWithAddClass = document.getElementsByClassName('add');
+	    	let elementsWithAddClass = form.getElementsByClassName('add');
 			Array.from(elementsWithAddClass).forEach((el) => {
 				el.className += ' hide';
 			});
@@ -39,7 +47,6 @@ function renderEditForm() {
 	        form.addEventListener('submit', (e) => {
 	        	e.preventDefault();
 	        	let formData = serializeForm(form);
-	        	console.log(formData);
 	        	sendFormData('put', '/avengers', formData);
 	        });
 		} else {
@@ -50,6 +57,8 @@ function renderEditForm() {
 };
 
 function renderAddForm() {
+	overlay.className = 'fadeout';
+
 	let request = new XMLHttpRequest();
 	request.open('GET', 'form');
 	request.onload = () => {
@@ -57,9 +66,10 @@ function renderAddForm() {
 	        let form = document.createElement('div');
 	        form.className = 'form-container';
 	        form.innerHTML = request.responseText;
+
 	        body.appendChild(form);
 
-	        let elementsWithAddClass = document.getElementsByClassName('edit');
+	        let elementsWithAddClass = form.getElementsByClassName('edit');
 			Array.from(elementsWithAddClass).forEach((el) => {
 				el.className += ' hide';
 			});
