@@ -54,12 +54,18 @@ h1 {
   display: none; }
 
 .fadeout {
-  animation: fadeout 0.4s;
+  animation: fadeout 0.2s;
   position: fixed;
   width: 100%;
   height: 100%;
   top: 0;
   background-color: rgba(2, 11, 16, 0.9); }
+
+@keyframes fadeout {
+  from {
+    opacity: 0; }
+  to {
+    opacity: 1; } }
 
 button {
   border-radius: 2px;
@@ -101,6 +107,8 @@ button {
     font-size: 14px; }
   .form-container #form .edit {
     margin: 0 10px; }
+  .form-container #form .message {
+    margin-top: 10px; }
 
 #rings {
   position: absolute;

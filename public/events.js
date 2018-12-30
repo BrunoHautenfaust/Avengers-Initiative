@@ -11,6 +11,11 @@ for (let i = 0; i < avenger.length; i++) {
 
 overlay.addEventListener('click', fadeOut);
 
+
+let click = new Audio('sfx/click.wav');
+let submit = new Audio('sfx/submit.wav');
+
+
 function fadeOut(e) {
 	e.target.className = '';
 	let form = document.getElementsByClassName('form-container')[0];
@@ -25,6 +30,7 @@ function removeAvenger(e) {
 }
 
 function renderEditForm() {
+	click.play();
 	let overlay = document.getElementById('dim');
 	overlay.className = 'fadeout';
 
@@ -61,6 +67,7 @@ function renderEditForm() {
 };
 
 function renderAddForm() {
+	click.play();
 	let overlay = document.getElementById('dim');
 	overlay.className = 'fadeout';
 
@@ -93,7 +100,7 @@ function renderAddForm() {
 }
 
 function serializeForm(form) {
-  let input = form.querySelectorAll('input[type="text"], input[type="email"], input[type="hidden"]');
+  let input = form.querySelectorAll('input[type="text"], input[type="hidden"]');
   let formData = {};
   for (let i = 0; i < input.length; i++) {
     formData[input[i].name] = input[i].value;
@@ -109,6 +116,7 @@ function sendFormData(method, url, data) {
 	request.onload = () => {
 		if (request.status === 200) {
 			let message = document.createElement('div');
+			message.className = 'message';
 			message.innerText = request.responseText;
 			let form = document.getElementById('form');
 			form.appendChild(message);
@@ -140,8 +148,13 @@ function sendFormData(method, url, data) {
 		} else {
 			let form = document.getElementById('form');
 			let message = document.createElement('div');
+			message.className = 'message';
 			message.innerHTML = request.responseText;
 			form.appendChild(message);
+			
+			setTimeout(() => {
+				message.remove();
+			}, 1000);
 		}
 	};
 	request.send(data);
