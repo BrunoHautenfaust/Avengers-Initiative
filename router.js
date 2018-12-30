@@ -18,7 +18,7 @@ router.post('/avengers', controller.sanitizeFields, controller.validateFields, c
 router.put('/avengers', controller.sanitizeFields, controller.validateFields, controller.updateAvenger);
 
 // DELETE
-router.delete('/avengers', controller.removeAvenger);
+router.delete('/avengers/:id', controller.removeAvenger);
 
 router.get('/form', controller.form);
 

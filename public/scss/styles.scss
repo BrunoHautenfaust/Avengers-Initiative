@@ -16,7 +16,6 @@ $ring-3: #315379;
 }
 
 body {
-	/*background-color: $bg;*/
 	color: $text;
 	text-align: center;
   font-family: 'Ubuntu', sans-serif;
@@ -31,10 +30,30 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#05212e', end
 
 }
 
+#audio {
+  height: 25px;
+  width: 25px;
+  display: inline-block;
+  position: absolute;
+  top: 4%;
+  right: 4%;
+
+  &.on {
+    background: no-repeat center /100% url('../svg/volume-medium.svg');
+  }
+
+  &.off {
+   background: no-repeat center /100% url('../svg/volume-mute.svg'); 
+  }
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+
 h1 {
   text-transform: uppercase;
   font-style: italic;
-  /*text-decoration: underline;*/
   position: relative;
   color: $title;
   -webkit-text-stroke: 1px $title-outline;
@@ -66,6 +85,20 @@ h1 {
     cursor: pointer;
   }
 }
+
+.show {
+  animation: test 0.3s;
+}
+
+@keyframes test {
+    from {
+      transform: scale(0);
+    }
+    to {
+      transform: scale(1);
+    }
+}
+
 
 .hide {
 	display: none;

@@ -8,9 +8,10 @@
 	</head>
 	<body>
 		<h1>Avengers Initiative</h1>
+		<div id="audio" class="on"></div>
 		<div class="avengers">
 			<% avengers.forEach((a) => { %>
-			<div id="<%= a.id %>" class="avenger">
+			<div id="<%= a.id %>" class="avenger hide">
 				<p class="name"> <%= a.givenName %> <%= a.familyName %> </p>
 				<p class="email"> <%= a.email %> </p>
 				<p class="created"> <%= a.created.toDate() %> </p>
@@ -18,7 +19,7 @@
 			<% }) %>
 		</div>
 
-		<button class="add"><span>Add Avenger</span></button>
+		<button class="add hide"><span>Add Avenger</span></button>
 		<% include bg %>
 		<div id="dim"></div>
 

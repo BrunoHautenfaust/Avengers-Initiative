@@ -1,20 +1,55 @@
 let click = new Audio('sfx/click.wav');
+let music = new Audio('sfx/music.wav');
+music.loop = true;
+music.volume = 0.2;
+music.play();
+
+// Loop music
+setInterval(() => {
+	if (music.currentTime >= 16) {
+		music.currentTime = 0;
+	}
+}, 100);
 
 bindEvents();
 
 function bindEvents() {
-	let addButton = document.getElementsByClassName('add')[0];
-	let avenger = document.getElementsByClassName('avenger');
+	let avengers = document.getElementsByClassName('avenger');
 	let body = document.getElementsByTagName('body')[0];
 	let overlay = document.getElementById('dim');
+	let audioButton = document.getElementById('audio');
 
-	addButton.addEventListener('click', renderAddForm);
+	audioButton.addEventListener('click', () => {
+		if (!music.paused) {
+			music.pause();
+			audioButton.className = 'off';
+		} else {
+			music.play();
+			audioButton.className = 'on';
+		}
+	});
+	
+	Array.from(avengers).forEach((el, i) => {
+		let show = new Audio('sfx/show.wav');
+		el.addEventListener('click', renderEditForm);
+		setTimeout(() => {
+			i += 1;
+			el.className = 'avenger show';
+			show.play();
+		}, 1000 + (i * 500));
+	});
 
-	for (let i = 0; i < avenger.length; i++) {
-    	avenger[i].addEventListener('click', renderEditForm);
-	}
+	let time = 1000 + (Array.from(avengers).length * 500);
+	setTimeout(() => {
+		let addButton = document.getElementsByClassName('add hide')[0];
+		addButton.className = 'add';
+		addButton.addEventListener('click', renderAddForm);
+		click.play();
+	}, time);
 
 	overlay.addEventListener('click', fadeOut);
+
+
 }
 
 // Fade out display when a form gets rendered
@@ -63,8 +98,9 @@ function renderEditForm() {
 function removeAvenger(e) {
 	e.preventDefault();
 	let form = document.getElementById('form');
+	let id = form.elements['id'].value;
    	let formData = serializeForm(form);
-	sendFormData('DELETE', '/avengers', formData);
+	sendFormData('DELETE', '/avengers/' + id, formData);
 }
 
 /* Render successful response

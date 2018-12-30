@@ -3,7 +3,6 @@
   src: url("../css/fonts/UbuntuCondensed-Regular.ttf"); }
 
 body {
-  /*background-color: $bg;*/
   color: #C6E9F2;
   text-align: center;
   font-family: 'Ubuntu', sans-serif;
@@ -20,10 +19,23 @@ body {
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#05212e', endColorstr='#000000',GradientType=1 );
   /* IE6-9 fallback on horizontal gradient */ }
 
+#audio {
+  height: 25px;
+  width: 25px;
+  display: inline-block;
+  position: absolute;
+  top: 4%;
+  right: 4%; }
+  #audio.on {
+    background: no-repeat center/100% url("../svg/volume-medium.svg"); }
+  #audio.off {
+    background: no-repeat center/100% url("../svg/volume-mute.svg"); }
+  #audio:hover {
+    cursor: pointer; }
+
 h1 {
   text-transform: uppercase;
   font-style: italic;
-  /*text-decoration: underline;*/
   position: relative;
   color: #E3EFF2;
   -webkit-text-stroke: 1px #7299B5; }
@@ -49,6 +61,15 @@ h1 {
     border-color: #9ECAED;
     box-shadow: 0 0 10px #9ECAED;
     cursor: pointer; }
+
+.show {
+  animation: test 0.3s; }
+
+@keyframes test {
+  from {
+    transform: scale(0); }
+  to {
+    transform: scale(1); } }
 
 .hide {
   display: none; }

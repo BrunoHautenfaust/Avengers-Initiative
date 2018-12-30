@@ -1,0 +1,113 @@
+/*$cwDuration: 22s;
+$cwDuration2: 20s;
+$ccwDuration: 25s;
+
+#rings {
+  position: absolute;
+  overflow: hidden;
+  top: 10%;
+  left: 60%;
+  z-index: -1;
+  opacity: 0.05;
+  width: 400px;
+  height: 400px;
+}
+
+#ring-1 {
+  position: absolute;
+  border: 5px solid $ring-1;
+  border-top-color: $bg;
+  width: 380px;
+  height: 380px;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  border-radius: 50%;
+  -webkit-animation: turn_clockwise $cwDuration linear infinite;
+  -moz-animation: turn_clockwise $cwDuration linear infinite;
+  animation: turn_clockwise $cwDuration linear infinite;   
+}
+
+#ring-2 {
+  position: absolute;
+  border: 10px solid $ring-2;
+  border-top-color: $bg;
+  border-bottom-color: $bg;
+  width: 350px;
+  height: 350px;
+  margin: 5px;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  border-radius: 50%;
+  -webkit-animation: turn_counter_clockwise $ccwDuration infinite;
+  -moz-animation: turn_counter_clockwise $ccwDuration infinite;
+  animation: turn_counter_clockwise $ccwDuration infinite;  
+}
+
+#ring-3 {
+  position: absolute;
+  border: 2px solid $ring-3;
+  border-bottom-color: $bg;
+  margin: 5px;
+  width: 330px;
+  height: 330px;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  border-radius: 50%;
+  -webkit-animation: turn_clockwise $cwDuration2 linear infinite;
+  -moz-animation: turn_clockwise $cwDuration2 linear infinite;
+  animation: turn_clockwise $cwDuration2 linear infinite;
+}       
+
+@-webkit-keyframes turn_clockwise {
+  0% {
+    -webkit-transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+  }
+}
+
+@-moz-keyframes turn_clockwise {
+  0% {
+    -moz-transform: rotate(0deg);
+  }
+  100% {
+    -moz-transform: rotate(360deg);
+  }
+}
+
+@keyframes turn_clockwise {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@-webkit-keyframes turn_counter_clockwise {
+  0% {
+    -webkit-transform: rotate(360deg);
+  }
+  100% {
+    -webkit-transform: rotate(0deg);
+  }
+}
+
+@-moz-keyframes turn_counter_clockwise {
+  0% {
+    -moz-transform: rotate(360deg);
+  }
+  100% {
+    -moz-transform: rotate(0deg);
+  }
+}
+
+@keyframes turn_counter_clockwise {
+  0% {
+    transform: rotate(360deg);
+  }
+  100% {
+    transform: rotate(0deg);   
+  }   
+}*/

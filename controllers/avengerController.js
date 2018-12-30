@@ -68,7 +68,7 @@ controller.updateAvenger = (req, res) => {
 
 // REMOVE AVENGER
 controller.removeAvenger = (req, res) => {
-	let id = req.body.id;
+	let id = req.params.id;
 	let avenger = AvengerModel.collection.doc(id);
 
 	avenger.delete()
