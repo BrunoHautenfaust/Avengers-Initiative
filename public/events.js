@@ -93,7 +93,7 @@ function renderAddForm() {
 }
 
 function serializeForm(form) {
-  let input = form.querySelectorAll('input[type="text"], input[type="hidden"]');
+  let input = form.querySelectorAll('input[type="text"], input[type="email"], input[type="hidden"]');
   let formData = {};
   for (let i = 0; i < input.length; i++) {
     formData[input[i].name] = input[i].value;

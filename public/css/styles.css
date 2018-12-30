@@ -7,6 +7,7 @@ body {
   color: #C6E9F2;
   text-align: center;
   font-family: 'Ubuntu', sans-serif;
+  overflow-x: hidden;
   /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#05212e+0,020b10+43,000000+99 */
   background: #05212e;
   /* Old browsers */
@@ -42,7 +43,8 @@ h1 {
   border: 2px solid #3499BA;
   margin: 10px 10px;
   display: inline-block;
-  width: 20%; }
+  width: 30%;
+  min-width: 200px; }
   .avenger:hover {
     border-color: #9ECAED;
     box-shadow: 0 0 10px #9ECAED;
