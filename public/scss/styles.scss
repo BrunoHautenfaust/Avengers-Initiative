@@ -5,6 +5,9 @@ $bg-transparent: rgba(2, 11, 16, 0.9);
 $text: #C6E9F2;
 $title: #E3EFF2;
 $title-outline: #7299B5;
+$ring-1: $border;
+$ring-2: $title;
+$ring-3: #315379;
 
 @font-face {
   font-family: 'Ubuntu';
@@ -18,7 +21,6 @@ body {
 	text-align: center;
   font-family: 'Ubuntu', sans-serif;
 
-
 /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#05212e+0,020b10+43,000000+99 */
 background: #05212e; /* Old browsers */
 background: -moz-radial-gradient(center, ellipse cover, #05212e 0%, #020b10 43%, #000000 99%); /* FF3.6-15 */
@@ -31,14 +33,30 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#05212e', end
 h1 {
   text-transform: uppercase;
   font-style: italic;
-  text-decoration: underline;
+  /*text-decoration: underline;*/
+  position: relative;
   color: $title;
   -webkit-text-stroke: 1px $title-outline;
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: 82%;
+    left: 50%;
+    box-shadow: 0 0 2px 15px $border-hover;
+    background-color: $border-hover;
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    transform: scale(8, 0.1);
+  }
 }
 
 .avenger {
 	border: 2px solid $border;
-	margin: 10px 0;
+	margin: 10px 10px;
+  display: inline-block;
+  width: 20%;
 
 	&:hover {
     border-color: $border-hover;
@@ -84,76 +102,37 @@ button {
 
 .form-container {
 	position: absolute;
-    border: 2px solid $border;
-    top: calc(50% - 180px);
-    left: calc(50% - 297px/2);
-    padding: 2%;
-    background-color: $bg-transparent;
+  border: 2px solid $border;
+  top: calc(50% - 180px);
+  left: calc(50% - 297px/2);
+  padding: 2%;
+  background-color: $bg-transparent;
 
-    h2 {
-    	margin-top: 0;
+  h2 {
+  	margin-top: 0;
+  }
+
+  #form {
+    label {
+      display: block;
+      font-size: 18px;
     }
 
-    #form {
-      label {
-        display: block;
-        font-size: 18px;
-      }
-
-      input[type="text"] {
-        background-color: transparent;
-        color: white;
-        border-radius: 2px;
-        border: 2px solid $border;
-        max-width: 50%;
-        float: right;
-        text-indent: 5px;
-        font-size: 14px;
-      }
-
-      .edit {
-        margin: 0 10px;
-      }
+    input[type="text"] {
+      background-color: transparent;
+      color: white;
+      border-radius: 2px;
+      border: 2px solid $border;
+      max-width: 50%;
+      float: right;
+      text-indent: 5px;
+      font-size: 14px;
     }
-}
 
-/* ANIMATIONS */
-
-@keyframes fadeout {
-    from { opacity: 0; }
-    to   { opacity: 1; }
-}
-
-.path {
-  position: absolute;
-  overflow: hidden;
-  width: 99%;
-  height: 80px;
-  background-color: #c1c1c1;
-  /*margin: auto;*/
-}
-.shape {
-  position: absolute;
-  background-color: red;
-  width: 100%;
-  height: 20px;
-  display: block;
-  /*border-radius: 50%;*/
-  left: -50;
-  transform-origin:left;
-  
-  /*animation: ani 4.0s infinite;*/
-  animation: linear 4s pass infinite;
-}
-
-/*
-@keyframes pass {
-  from { transform: scaleX(0); }
-  to   { transform: scaleX(2); }
-  90% {
-    transform-origin: right center;
-    transofrm: scaleX(1);
-
+    .edit {
+      margin: 0 10px;
+    }
   }
 }
-*/
+
+@import 'effects';
