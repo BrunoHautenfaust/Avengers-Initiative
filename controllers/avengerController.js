@@ -49,11 +49,6 @@ controller.getAvenger = (req, res) => {
 controller.addAvenger = (req, res) => {
 	let avenger = AvengerModel.avenger;
 
-	// for(let prop in req.body) {
-	// 	req.body[prop] = req.sanitize(req.body[prop]);
-	// 	console.log(req.body[prop]);
-	// }
-
 	req.body.created = new Date();
 	avenger.set(req.body)
 		.then(() => res.send(Constants.messages.recordAdded))
