@@ -14,7 +14,7 @@ controller.getAvengers = (req, res) => {
 
 					return docSnapshot;
 				});
-
+				res.set('Content-Type', 'text/html');
 				res.render('../views/index', {avengers: data});
 			} else {
 				res.send(Constants.messages.noRecordsFound);
