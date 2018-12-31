@@ -4,7 +4,7 @@ const controller = {};
 
 // GET AVENGERS
 controller.getAvengers = (req, res) => {
-	let collection = AvengerModel.collection.get()
+	let collection = AvengerModel.get()
 		.then((querySnapshot) => {
 			if (!querySnapshot.empty) {
 				let data = querySnapshot.docs.map((documentSnapshot) => {
@@ -28,7 +28,7 @@ controller.getAvengers = (req, res) => {
 // GET AVENGER BY ID
 controller.getAvenger = (req, res) => {
 	let id = req.params.id;
-	let avenger = AvengerModel.collection.doc(id);
+	let avenger = AvengerModel.doc(id);
 	avenger.get().then((documentSnapshot) => {
 		if (documentSnapshot.exists) {
 			let data = documentSnapshot.data();
@@ -47,7 +47,7 @@ controller.getAvenger = (req, res) => {
 
 // CREATE AVENGER
 controller.addAvenger = (req, res) => {
-	let avenger = AvengerModel.avenger;
+	let avenger = AvengerModel.doc();
 
 	req.body.created = new Date();
 	avenger.set(req.body)
@@ -58,7 +58,7 @@ controller.addAvenger = (req, res) => {
 // UPDATE AVENGER
 controller.updateAvenger = (req, res) => {
 	let id = req.body.id;
-	let avenger = AvengerModel.collection.doc(id);
+	let avenger = AvengerModel.doc(id);
 	delete req.body.id;
 
 	avenger.update(req.body)
@@ -69,7 +69,7 @@ controller.updateAvenger = (req, res) => {
 // REMOVE AVENGER
 controller.removeAvenger = (req, res) => {
 	let id = req.params.id;
-	let avenger = AvengerModel.collection.doc(id);
+	let avenger = AvengerModel.doc(id);
 
 	avenger.delete()
 		.then(() => res.send(Constants.messages.recordRemoved))

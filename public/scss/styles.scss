@@ -12,7 +12,6 @@ $ring-3: #315379;
 @font-face {
   font-family: 'Ubuntu';
   src: url('../css/fonts/UbuntuCondensed-Regular.ttf');
-
 }
 
 body {
@@ -20,14 +19,7 @@ body {
 	text-align: center;
   font-family: 'Ubuntu', sans-serif;
   overflow-x: hidden;
-
-/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#05212e+0,020b10+43,000000+99 */
-background: #05212e; /* Old browsers */
-background: -moz-radial-gradient(center, ellipse cover, #05212e 0%, #020b10 43%, #000000 99%); /* FF3.6-15 */
-background: -webkit-radial-gradient(center, ellipse cover, #05212e 0%,#020b10 43%,#000000 99%); /* Chrome10-25,Safari5.1-6 */
-background: radial-gradient(ellipse at center, #05212e 0%,#020b10 43%,#000000 99%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#05212e', endColorstr='#000000',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
-
+  background: $bg;
 }
 
 #audio {
