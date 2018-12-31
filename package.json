@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js",
     "all-scripts": "npm-run-all -p nodemon sass",
     "nodemon": "nodemon index.js",
     "sass": "node-sass --watch public/scss -o public/css"
