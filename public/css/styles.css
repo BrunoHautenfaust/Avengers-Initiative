@@ -132,56 +132,102 @@ button {
     margin-top: 10px; }
 
 #rings {
-  position: absolute;
+  position: fixed;
   overflow: hidden;
-  top: 10%;
+  top: 0;
   left: 60%;
   z-index: -1;
   opacity: 0.05;
   width: 400px;
   height: 400px; }
+  #rings .ring-1 {
+    position: absolute;
+    border: 5px solid #3499BA;
+    border-top-color: #020b10;
+    width: 380px;
+    height: 380px;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    border-radius: 50%;
+    -webkit-animation: turn_clockwise 22s linear infinite;
+    -moz-animation: turn_clockwise 22s linear infinite;
+    animation: turn_clockwise 22s linear infinite; }
+  #rings .ring-2 {
+    position: absolute;
+    border: 10px solid #E3EFF2;
+    border-top-color: #020b10;
+    border-bottom-color: #020b10;
+    width: 350px;
+    height: 350px;
+    margin: 5px;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    border-radius: 50%;
+    -webkit-animation: turn_counter_clockwise 25s infinite;
+    -moz-animation: turn_counter_clockwise 25s infinite;
+    animation: turn_counter_clockwise 25s infinite; }
+  #rings .ring-3 {
+    position: absolute;
+    border: 2px solid #315379;
+    border-bottom-color: #020b10;
+    margin: 5px;
+    width: 330px;
+    height: 330px;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    border-radius: 50%;
+    -webkit-animation: turn_clockwise 20s linear infinite;
+    -moz-animation: turn_clockwise 20s linear infinite;
+    animation: turn_clockwise 20s linear infinite; }
 
-#ring-1 {
-  position: absolute;
-  border: 5px solid #3499BA;
-  border-top-color: #020b10;
-  width: 380px;
-  height: 380px;
-  -webkit-border-radius: 50%;
-  -moz-border-radius: 50%;
-  border-radius: 50%;
-  -webkit-animation: turn_clockwise 22s linear infinite;
-  -moz-animation: turn_clockwise 22s linear infinite;
-  animation: turn_clockwise 22s linear infinite; }
-
-#ring-2 {
-  position: absolute;
-  border: 10px solid #E3EFF2;
-  border-top-color: #020b10;
-  border-bottom-color: #020b10;
-  width: 350px;
-  height: 350px;
-  margin: 5px;
-  -webkit-border-radius: 50%;
-  -moz-border-radius: 50%;
-  border-radius: 50%;
-  -webkit-animation: turn_counter_clockwise 25s infinite;
-  -moz-animation: turn_counter_clockwise 25s infinite;
-  animation: turn_counter_clockwise 25s infinite; }
-
-#ring-3 {
-  position: absolute;
-  border: 2px solid #315379;
-  border-bottom-color: #020b10;
-  margin: 5px;
-  width: 330px;
-  height: 330px;
-  -webkit-border-radius: 50%;
-  -moz-border-radius: 50%;
-  border-radius: 50%;
-  -webkit-animation: turn_clockwise 20s linear infinite;
-  -moz-animation: turn_clockwise 20s linear infinite;
-  animation: turn_clockwise 20s linear infinite; }
+#rings2 {
+  position: fixed;
+  overflow: hidden;
+  top: 50%;
+  right: 60%;
+  z-index: -1;
+  opacity: 0.04;
+  width: 500px;
+  height: 500px; }
+  #rings2 .ring-4 {
+    position: absolute;
+    border: 5px solid #E3EFF2;
+    border-top-color: #020b10;
+    width: 480px;
+    height: 480px;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    border-radius: 50%;
+    -webkit-animation: turn_clockwise 22s linear infinite;
+    -moz-animation: turn_clockwise 22s linear infinite;
+    animation: turn_clockwise 22s linear infinite; }
+  #rings2 .ring-5 {
+    position: absolute;
+    border: 10px solid #3499BA;
+    border-top-color: #020b10;
+    border-bottom-color: #020b10;
+    width: 450px;
+    height: 450px;
+    margin: 5px;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    border-radius: 50%;
+    -webkit-animation: turn_counter_clockwise 25s infinite;
+    -moz-animation: turn_counter_clockwise 25s infinite;
+    animation: turn_counter_clockwise 25s infinite; }
+  #rings2 .ring-6 {
+    position: absolute;
+    border: 2px solid #315379;
+    border-bottom-color: #020b10;
+    margin: 5px;
+    width: 430px;
+    height: 430px;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    border-radius: 50%;
+    -webkit-animation: turn_clockwise 20s linear infinite;
+    -moz-animation: turn_clockwise 20s linear infinite;
+    animation: turn_clockwise 20s linear infinite; }
 
 @-webkit-keyframes turn_clockwise {
   0% {
